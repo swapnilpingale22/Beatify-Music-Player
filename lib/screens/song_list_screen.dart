@@ -16,12 +16,12 @@ class _SongListState extends State<SongList> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Trending Music',
+          'All Music',
           style: TextStyle(
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.deepPurple.shade800.withOpacity(0.8),
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
