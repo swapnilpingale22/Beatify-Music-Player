@@ -183,7 +183,7 @@ class _TrendingMusic extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: SectionHeader(
-              title: 'Trending Music',
+              title: 'Trending Now',
               operation: () {
                 Navigator.push(
                   context,
@@ -200,8 +200,8 @@ class _TrendingMusic extends StatelessWidget {
             child: FutureBuilder<List<SongModel>>(
               future: controller.audioQuery.querySongs(
                 ignoreCase: true,
-                sortType: null,
-                orderType: OrderType.ASC_OR_SMALLER,
+                sortType: SongSortType.DATE_ADDED,
+                orderType: OrderType.DESC_OR_GREATER,
                 uriType: UriType.EXTERNAL,
               ),
               builder: (context, snapshot) {

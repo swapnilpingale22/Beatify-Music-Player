@@ -11,6 +11,16 @@ class SongList extends StatefulWidget {
 
 class _SongListState extends State<SongList> {
   final OnAudioQuery _audioQuery = OnAudioQuery();
+
+  String sortByName = "🔤  Sort by Name";
+  String sortByDate = "📅  Sort by Date";
+  String sortBySize = "📈  Sort by Size";
+  String sortByAlbum = "📀  Sort by Album";
+  String sortByArtist = "🙍‍♂️  Sort by Artist";
+  String sortByDuration = "⌛  Sort by Duration";
+
+  SongSortType dValue = SongSortType.TITLE;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +34,41 @@ class _SongListState extends State<SongList> {
         backgroundColor: Colors.deepPurple.shade800.withOpacity(0.8),
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.white),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: SongSortType.TITLE,
+                child: Text(sortByName),
+              ),
+              PopupMenuItem(
+                value: SongSortType.DATE_ADDED,
+                child: Text(sortByDate),
+              ),
+              PopupMenuItem(
+                value: SongSortType.SIZE,
+                child: Text(sortBySize),
+              ),
+              PopupMenuItem(
+                value: SongSortType.ALBUM,
+                child: Text(sortByAlbum),
+              ),
+              PopupMenuItem(
+                value: SongSortType.ARTIST,
+                child: Text(sortByArtist),
+              ),
+              PopupMenuItem(
+                value: SongSortType.DURATION,
+                child: Text(sortByDuration),
+              ),
+            ],
+            onSelected: (SongSortType newValue) {
+              setState(() {
+                dValue = newValue;
+              });
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -38,29 +83,28 @@ class _SongListState extends State<SongList> {
         ),
         child: Center(
           child: FutureBuilder<List<SongModel>>(
-            // Default values:
             future: _audioQuery.querySongs(
-              sortType: null,
-              orderType: OrderType.ASC_OR_SMALLER,
+              sortType: dValue,
+              orderType: (dValue == SongSortType.DATE_ADDED ||
+                      dValue == SongSortType.DURATION ||
+                      dValue == SongSortType.SIZE)
+                  ? OrderType.DESC_OR_GREATER
+                  : OrderType.ASC_OR_SMALLER,
               uriType: UriType.EXTERNAL,
               ignoreCase: true,
             ),
             builder: (context, item) {
               var song2 = item.data;
-              // Display error, if any.
               if (item.hasError) {
                 return Text(item.error.toString());
               }
 
-              // Waiting content.
               if (item.data == null) {
                 return const CircularProgressIndicator();
               }
 
               if (item.data!.isEmpty) return const Text("Nothing found!");
 
-              // You can use [item.data!] direct or you can create a:
-              // List<SongModel> songs = item.data!;
               return ListView.builder(
                 itemCount: item.data!.length,
                 itemBuilder: (context, index) {

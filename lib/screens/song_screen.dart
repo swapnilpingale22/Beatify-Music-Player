@@ -53,10 +53,6 @@ class _SongScreenState extends State<SongScreen> {
         alignment: AlignmentDirectional.topCenter,
         fit: StackFit.expand,
         children: [
-          // SizedBox(
-          //   height: MediaQuery.of(context).size.height,
-          //   width: MediaQuery.of(context).size.width,
-          // ),
           Positioned(
             top: 0,
             child: QueryArtworkWidget(
@@ -130,7 +126,7 @@ class _MusicPlayer extends StatelessWidget {
                         blankSpace: 300.0,
                         velocity: 100.0,
                         pauseAfterRound: const Duration(seconds: 1),
-                        // startPadding: 10.0,
+                        startPadding: 10.0,
                         accelerationDuration:
                             const Duration(milliseconds: 1500),
                         accelerationCurve: Curves.linear,
