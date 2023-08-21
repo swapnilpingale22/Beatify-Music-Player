@@ -50,16 +50,29 @@ class _SongScreenState extends State<SongScreen> {
       ),
       extendBodyBehindAppBar: true,
       body: Stack(
+        alignment: AlignmentDirectional.topCenter,
         fit: StackFit.expand,
         children: [
-          QueryArtworkWidget(
-            artworkFit: BoxFit.cover,
-            id: song2.id,
-            type: ArtworkType.AUDIO,
-            nullArtworkWidget: const Icon(
-              Icons.music_note,
-              color: Colors.white,
-              size: 100,
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height,
+          //   width: MediaQuery.of(context).size.width,
+          // ),
+          Positioned(
+            top: 0,
+            child: QueryArtworkWidget(
+              artworkWidth: MediaQuery.of(context).size.width,
+              artworkHeight: MediaQuery.of(context).size.width,
+              quality: 100,
+              size: 1280,
+              artworkBorder: BorderRadius.zero,
+              artworkFit: BoxFit.fitWidth,
+              id: song2.id,
+              type: ArtworkType.AUDIO,
+              nullArtworkWidget: const Icon(
+                Icons.music_note,
+                color: Colors.white,
+                size: 100,
+              ),
             ),
           ),
           const _BackgroundFilter(),
@@ -204,8 +217,8 @@ class _BackgroundFilter extends StatelessWidget {
           ],
           stops: const [
             0.0,
-            0.4,
-            0.6,
+            0.43,
+            0.53,
           ],
         ).createShader(rect);
       },

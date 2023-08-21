@@ -25,18 +25,19 @@ class SongCard2 extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               width: MediaQuery.of(context).size.width * 0.42,
               height: 300,
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.circular(15.0),
-              //   // boxShadow: const [
-              //   //   BoxShadow(
-              //   //     color: Colors.black38,
-              //   //     blurRadius: 4,
-              //   //     spreadRadius: 3,
-              //   //     offset: Offset(3, 4),
-              //   //   ),
-              //   // ],
-              // ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black45,
+                    blurRadius: 6,
+                    spreadRadius: 2,
+                    offset: Offset(2, 2),
+                  ),
+                ],
+              ),
               child: QueryArtworkWidget(
+                artworkBorder: BorderRadius.circular(20),
                 id: song2.id,
                 type: ArtworkType.AUDIO,
                 nullArtworkWidget: const Icon(
