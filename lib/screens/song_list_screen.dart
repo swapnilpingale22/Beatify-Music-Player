@@ -81,70 +81,68 @@ class _SongListState extends State<SongList> {
             ],
           ),
         ),
-        child: Center(
-          child: FutureBuilder<List<SongModel>>(
-            future: _audioQuery.querySongs(
-              sortType: dValue,
-              orderType: (dValue == SongSortType.DATE_ADDED ||
-                      dValue == SongSortType.DURATION ||
-                      dValue == SongSortType.SIZE)
-                  ? OrderType.DESC_OR_GREATER
-                  : OrderType.ASC_OR_SMALLER,
-              uriType: UriType.EXTERNAL,
-              ignoreCase: true,
-            ),
-            builder: (context, item) {
-              var song2 = item.data;
-              if (item.hasError) {
-                return Text(item.error.toString());
-              }
-
-              if (item.data == null) {
-                return const CircularProgressIndicator();
-              }
-
-              if (item.data!.isEmpty) return const Text("Nothing found!");
-
-              return ListView.builder(
-                itemCount: item.data!.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.black45.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: ListTile(
-                      onTap: () {
-                        Get.toNamed('/song', arguments: song2![index]);
-                      },
-                      title: Text(
-                        item.data![index].title,
-                        maxLines: 1,
-                      ),
-                      subtitle: Text(
-                        item.data![index].artist ?? "No Artist",
-                        maxLines: 1,
-                      ),
-                      trailing: const Icon(
-                        Icons.play_circle,
-                        color: Colors.white60,
-                      ),
-                      leading: QueryArtworkWidget(
-                        controller: _audioQuery,
-                        id: item.data![index].id,
-                        type: ArtworkType.AUDIO,
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
+        child: FutureBuilder<List<SongModel>>(
+          future: _audioQuery.querySongs(
+            sortType: dValue,
+            orderType: (dValue == SongSortType.DATE_ADDED ||
+                    dValue == SongSortType.DURATION ||
+                    dValue == SongSortType.SIZE)
+                ? OrderType.DESC_OR_GREATER
+                : OrderType.ASC_OR_SMALLER,
+            uriType: UriType.EXTERNAL,
+            ignoreCase: true,
           ),
+          builder: (context, item) {
+            var song2 = item.data;
+            if (item.hasError) {
+              return Text(item.error.toString());
+            }
+
+            if (item.data == null) {
+              return const CircularProgressIndicator();
+            }
+
+            if (item.data!.isEmpty) return const Text("Nothing found!");
+
+            return ListView.builder(
+              itemCount: item.data!.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                    bottom: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black45.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: ListTile(
+                    onTap: () {
+                      Get.toNamed('/song', arguments: song2![index]);
+                    },
+                    title: Text(
+                      item.data![index].title,
+                      maxLines: 1,
+                    ),
+                    subtitle: Text(
+                      item.data![index].artist ?? "No Artist",
+                      maxLines: 1,
+                    ),
+                    trailing: const Icon(
+                      Icons.play_circle,
+                      color: Colors.white60,
+                    ),
+                    leading: QueryArtworkWidget(
+                      controller: _audioQuery,
+                      id: item.data![index].id,
+                      type: ArtworkType.AUDIO,
+                    ),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );
