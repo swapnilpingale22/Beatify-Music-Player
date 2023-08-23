@@ -1,8 +1,10 @@
-# dribble_music_player_by_swapnil
+# Beatify - Music Player
 
-A new Flutter project.
+A Flutter music player project using on_audio_query, just audio, Getx.
 
-## Getting Started
+## Screenshots
+
+
 
 This project is a starting point for a Flutter application.
 
