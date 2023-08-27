@@ -15,6 +15,8 @@ A beautiful multi screen flutter music player. Magic of on_audio_query & just_au
 
 <img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/9bb08f49-d8d4-4522-ae41-dd113fb23369" width="300" height="550" />
 
+---
+
 ### Build from source
 
 - Download latest Flutter SDK (>=2.2.3)
