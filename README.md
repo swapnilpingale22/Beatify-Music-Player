@@ -1,16 +1,16 @@
-# dribble_music_player_by_swapnil
+# Beatify Music Player.
 
-A new Flutter project.
+A beautiful multi screen flutter music player. Magic of on_audio_query & just_audio in Flutter💙
 
-## Getting Started
+### ⚡&ensp;Social Media
 
-This project is a starting point for a Flutter application.
+[<img align="center" alt="SwapnilPingale | YouTube" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Fyoutube.png?alt=media" />](https://www.youtube.com)&ensp;YouTube: [@SwapnilPingale](https://www.youtube.com "YouTube SwapnilPingale")
 
-A few resources to get you started if this is your first Flutter project:
+[<img align="center" alt="SwapnilPingale | Instagram" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Finstagram.png?alt=media" />](https://www.instagram.com/swapnil__pingale/)&ensp;Instagram: [@Swapnil__Pingale](https://www.instagram.com/swapnil__pingale/ "Instagram SwapnilPingale")
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[<img align="center" alt="Swapnil Pingale | LinkedIn" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Flinkedin.png?alt=media" />](https://www.linkedin.com/in/swapnil-pingale/)&ensp;LinkedIn: [@Swapnil Pingale](https://www.linkedin.com/in/swapnil-pingale/ "LinkedIn Swapnil Pingale")
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="60" width="300"></a>
+
+<img src="" width="300" height="550" />
