@@ -14,5 +14,3 @@ A beautiful multi screen flutter music player. Magic of on_audio_query & just_au
 <a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="60" width="300"></a>
 
 <img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/9bb08f49-d8d4-4522-ae41-dd113fb23369" width="300" height="550" />
-
-![20230821_223536_0000](https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/9bb08f49-d8d4-4522-ae41-dd113fb23369)
