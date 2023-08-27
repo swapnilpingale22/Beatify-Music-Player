@@ -1,18 +1,33 @@
-# Beatify - Music Player 🎵
+# Beatify Music Player.
 
-A Flutter music player project using on_audio_query, just audio, Getx.
+A beautiful multi screen flutter music player. Magic of on_audio_query & just_audio in Flutter💙
 
-## Screenshots
+### ⚡&ensp;Social Media
+
+[<img align="center" alt="SwapnilPingale | YouTube" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Fyoutube.png?alt=media" />](https://www.youtube.com)&ensp;YouTube: [@SwapnilPingale](https://www.youtube.com "YouTube SwapnilPingale")
+
+[<img align="center" alt="SwapnilPingale | Instagram" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Finstagram.png?alt=media" />](https://www.instagram.com/swapnil__pingale/)&ensp;Instagram: [@Swapnil__Pingale](https://www.instagram.com/swapnil__pingale/ "Instagram SwapnilPingale")
+
+[<img align="center" alt="Swapnil Pingale | LinkedIn" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Flinkedin.png?alt=media" />](https://www.linkedin.com/in/swapnil-pingale/)&ensp;LinkedIn: [@Swapnil Pingale](https://www.linkedin.com/in/swapnil-pingale/ "LinkedIn Swapnil Pingale")
 
 
+<a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="60" width="300"></a>
+---
+<img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/9bb08f49-d8d4-4522-ae41-dd113fb23369" width="300" height="550" />
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/64d3351a-b325-48b3-b975-7daedc8d92fd" width="900" height="500" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+### Build from source
+
+- Download latest Flutter SDK (>=2.2.3)
+- Clone this repo and then for building
+
+```bash
+# Download dependencies
+flutter pub get; flutter create .
+
+```
