@@ -12,11 +12,15 @@ A beautiful multi screen flutter music player. Magic of on_audio_query & just_au
 
 
 <a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="60" width="300"></a>
-
+---
 <img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/9bb08f49-d8d4-4522-ae41-dd113fb23369" width="300" height="550" />
 
 ---
 
+<img src="https://github.com/swapnilpingale22/Beatify-Music-Player/assets/132128463/64d3351a-b325-48b3-b975-7daedc8d92fd" width="900" height="500" />
+
+
+---
 ### Build from source
 
 - Download latest Flutter SDK (>=2.2.3)
@@ -26,6 +30,4 @@ A beautiful multi screen flutter music player. Magic of on_audio_query & just_au
 # Download dependencies
 flutter pub get; flutter create .
 
-# For Direct Testing
-flutter build <windows/macos/linux>
 ```
