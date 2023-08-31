@@ -1,19 +1,41 @@
 import 'package:dribble_music_player_by_swapnil/controller/player_controller.dart';
+import 'package:dribble_music_player_by_swapnil/screens/song_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import '../models/playlist_model.dart';
-import '../models/song_model.dart';
 import '../widgets/song_card_2.dart';
 import '../widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final OnAudioQuery _audioQuery = OnAudioQuery();
+
+  bool _hasPermission = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkAndRequestPermissions();
+  }
+
+  checkAndRequestPermissions({bool retry = false}) async {
+    _hasPermission = await _audioQuery.checkAndRequest(
+      retryRequest: retry,
+    );
+
+    _hasPermission ? setState(() {}) : null;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<Song> songs = Song.songs;
     List<Playlist> playlists = Playlist.playlists;
     return Container(
       decoration: BoxDecoration(
@@ -26,17 +48,88 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: const _CustomAppBar(),
-        bottomNavigationBar: const _CustomNavBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const _DiscoverMusic(),
-              _TrendingMusic(songs: songs),
-              _PlaylistMusic(playlists: playlists),
+      child: !_hasPermission
+          ? noAccessToLibraryWidget()
+          : Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: const _CustomAppBar(),
+              bottomNavigationBar: const _CustomNavBar(),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const _DiscoverMusic(),
+                    const _TrendingMusic(),
+                    _PlaylistMusic(playlists: playlists),
+                  ],
+                ),
+              ),
+            ),
+    );
+  }
+
+  Widget noAccessToLibraryWidget() {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.deepPurple.shade800.withOpacity(0.8),
+              Colors.deepPurple.shade200.withOpacity(0.8),
             ],
+          ),
+        ),
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.redAccent.shade700.withOpacity(0.8),
+                  Colors.redAccent.shade200.withOpacity(0.8),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                    offset: const Offset(3, 3),
+                    color: Colors.grey.shade700),
+              ],
+            ),
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Player doesn't have Storage Permission to access the library!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Colors.white,
+                    ),
+                  ),
+                  onPressed: () => checkAndRequestPermissions(retry: true),
+                  child: const Text(
+                    "Allow",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -74,11 +167,7 @@ class _PlaylistMusic extends StatelessWidget {
 }
 
 class _TrendingMusic extends StatelessWidget {
-  const _TrendingMusic({
-    required this.songs,
-  });
-
-  final List<Song> songs;
+  const _TrendingMusic();
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +180,19 @@ class _TrendingMusic extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: SectionHeader(title: 'Trending Music'),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: SectionHeader(
+              title: 'Trending Now',
+              operation: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SongList(),
+                  ),
+                );
+              },
+            ),
           ),
           const SizedBox(height: 20),
           SizedBox(
@@ -101,8 +200,8 @@ class _TrendingMusic extends StatelessWidget {
             child: FutureBuilder<List<SongModel>>(
               future: controller.audioQuery.querySongs(
                 ignoreCase: true,
-                sortType: null,
-                orderType: OrderType.ASC_OR_SMALLER,
+                sortType: SongSortType.DATE_ADDED,
+                orderType: OrderType.DESC_OR_GREATER,
                 uriType: UriType.EXTERNAL,
               ),
               builder: (context, snapshot) {
@@ -129,13 +228,6 @@ class _TrendingMusic extends StatelessWidget {
                 }
               },
             ),
-            //  ListView.builder(
-            //   scrollDirection: Axis.horizontal,
-            //   itemCount: songs.length,
-            //   itemBuilder: (context, index) {
-            //     return SongCard(song: songs[index]);
-            //   },
-            // ),
           )
         ],
       ),
@@ -144,9 +236,7 @@ class _TrendingMusic extends StatelessWidget {
 }
 
 class _DiscoverMusic extends StatelessWidget {
-  const _DiscoverMusic(
-      // {super.key}
-      );
+  const _DiscoverMusic();
 
   @override
   Widget build(BuildContext context) {
